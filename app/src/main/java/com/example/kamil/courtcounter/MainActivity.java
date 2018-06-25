@@ -10,7 +10,10 @@ import org.w3c.dom.Text;
 public class MainActivity extends AppCompatActivity {
 
     TextView textViewTeamA;
+    TextView textViewTeamB;
+
     int teamAPoints;
+    int teamBPoints;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,17 +21,38 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         teamAPoints = 0;
+        teamBPoints = 0;
+
         textViewTeamA = (TextView) findViewById(R.id.textViewTeamA);
+        textViewTeamB = (TextView) findViewById(R.id.textViewTeamB);
     }
 
-    public void displayTeamA(int points) {
-        textViewTeamA.setText("" + points);
+    public void displayTeamA() {
+        textViewTeamA.setText("" + teamAPoints);
     }
 
     public void addPointsTeamA(View view) {
         int point = Integer.parseInt(view.getTag().toString());
         teamAPoints += point;
-        displayTeamA(teamAPoints);
+        displayTeamA();
+    }
+
+    public void displayTeamB() {
+        textViewTeamB.setText("" + teamBPoints);
+    }
+
+    public void addPointsTeamB(View view) {
+        int point = Integer.parseInt(view.getTag().toString());
+        teamBPoints += point;
+        displayTeamB();
+    }
+
+    public void resetScores(View view){
+        teamAPoints = 0;
+        teamBPoints = 0;
+
+        displayTeamA();
+        displayTeamB();
     }
 
 
